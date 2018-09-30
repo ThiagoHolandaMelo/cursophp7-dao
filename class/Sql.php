@@ -28,11 +28,8 @@ class Sql extends PDO{
         
         $stmt = $this->conn->prepare($rawQuery);
         
-        foreach ($params as $key => $value){
-            
-            $stmt->bindParam($key, $value);
-        }
-        
+        $this->setParams($stmt, $params);
+                
         $stmt->execute();
         
         return $stmt;
