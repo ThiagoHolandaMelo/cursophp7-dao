@@ -82,6 +82,31 @@ class Usuario{
                 
     }
     
+    public function update($novoLogin, $novaSenha){
+        $sql = new Sql();
+        
+        $sql->query("update tb_usuarios set deslogin = :LOGIN, dessenha = :PASSWORD where idusuario = :ID", array(
+            ":ID" => $this->getIdusuario(),
+            ":LOGIN" => $novoLogin,
+            ":PASSWORD" => $novaSenha
+        ));
+    }
+    
+    public function delete(){
+       
+        $sql = new Sql();
+        
+        $sql->query("delete from tb_usuarios where idusuario = :ID", array(
+            ":ID" => $this->getIdusuario()
+        ));
+        
+        $this->setIdusuario("");
+        $this->setDeslogin("");
+        $this->setDessenha("");
+        $this->setDtcadastro("");
+        
+    }
+    
     public static function getList(){
         
         $sql = new Sql();

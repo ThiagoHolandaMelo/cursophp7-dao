@@ -16,7 +16,17 @@ require_once("config.php");
 //$usuario->login("thiago", "!@#$%");
 //echo $usuario;
 
-$userNovo = new Usuario("Thiago Novo","123456");
-$userNovo->insert();
+//$userNovo = new Usuario("Thiago Novo","123456");
+//$userNovo->insert();
+
+/*
+$userAlterado = new Usuario();
+$userAlterado->loadById(6);
+$userAlterado->update("Thiago Vei", "123456");
+*/
+
+$userAlterado = new Usuario();
+$userAlterado->loadById(6);
+$userAlterado->delete();
 
 ?>
