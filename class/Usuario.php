@@ -7,6 +7,13 @@ class Usuario{
     private $dessenha;
     private $dtcadastro;
     
+    public function __construct($login = "", $senha = ""){
+        
+        $this->setDeslogin($login);
+        $this->setDessenha($senha);
+        
+    }
+    
     public function login($login, $password){
         $sql = new Sql();
         
@@ -58,6 +65,21 @@ class Usuario{
         return $sql->select("SELECT * FROM tb_usuarios WHERE deslogin like :SEARCH ORDER BY deslogin", array(
            ":SEARCH" => "%". $login ."%"          
         ));
+    }
+    
+    public function insert(){
+        
+        $sql = new Sql();
+        
+        //TODO adicionar validacao para evitar duplicacao
+        
+        $sql->query("insert into tb_usuarios(deslogin, dessenha) VALUES (:LOGIN, :PASSWORD)", array(
+            ":LOGIN" => $this->getDeslogin(),
+            ":PASSWORD" => $this->getDessenha()
+        ));
+        
+        //Buscar o elemento recem inserido, e atualizar ID
+                
     }
     
     public static function getList(){
