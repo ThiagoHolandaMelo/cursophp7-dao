@@ -6,7 +6,6 @@ require_once("config.php");
 //$user->loadById(2);
 //echo $user
 //testestestestes
-
 //$users = Usuario::getList();
 //echo json_encode($users);
 
