@@ -36,7 +36,7 @@ Git:
 			git config --global user.name "Thiago Melo"
 			
 		7 - Enviando código para repositorio remoto:
-			git git push origin master
+			git push origin master
 			
 		8 - Atualizando código a partir do repositorio remoto
 			git pull origin master
