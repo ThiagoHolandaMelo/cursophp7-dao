@@ -5,7 +5,7 @@ require_once("config.php");
 //$user = new Usuario();
 //$user->loadById(2);
 //echo $user
-//
+//testestestestes
 
 //$users = Usuario::getList();
 //echo json_encode($users);
@@ -19,7 +19,6 @@ require_once("config.php");
 
 //$userNovo = new Usuario("Thiago Novo","123456");
 //$userNovo->insert();
-//
 
 /*
 $userAlterado = new Usuario();
