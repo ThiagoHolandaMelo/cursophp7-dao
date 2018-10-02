@@ -1,0 +1,450 @@
+
+Dicas:
+	 - Arquivo de configuração do APACHE: httpd.conf
+	 - Arquivo de configuração do PHP: php.ini
+	 - Numeros randomicos:
+		rand(1,10)
+	 - Exibir valores na tela:
+		echo e print_r($arrayFrutas)
+	 - Documentação PHP: 
+		http://php.net/manual/pt_BR/
+	 - gettype retorna o tipo de uma variável
+	 - Mudar idioma:
+		setlocale(LC_ALL,"pt_BR", "pt_BR.utf-8", "portuguese")
+	 - Chamar métodos de um objeto:
+		"->"
+
+Git:
+
+	Comandos:
+		1 - Baixar um repositorio: git clone <endereco_gitHub> <subpasta_destino>
+		Exemplo: git clone https://github.com/joaohcrangel/jquery-jrangel-plugins.git minhaPastaDestino
+			
+		2 - Criar uma nova pasta gerenciada pelo gir: git init
+		
+		3 - Adicionar um arquivo ou vários:
+			git add index.php
+			git add --all
+			
+		4 - Commitando arquivos
+			git commit -m "Meu primeiro commit"
+			
+		5 - Sincronizando o git local para o git remoto
+			git remote add origin https://github.com/ThiagoHolandaMelo/estudo_php7.git
+			
+		6 - Parametrizando o user.name do git:
+			git config --global user.name "Thiago Melo"
+			
+		7 - Enviando código para repositorio remoto:
+			git git push origin master
+			
+		8 - Atualizando código a partir do repositorio remoto
+			git pull origin master
+			
+			
+Variaveis:
+
+	comando para remover a variável da memória: 
+		unset
+		
+	verificar se uma variável existe: 
+		isset($nome1)
+		
+	concaternar: 
+		"."
+		
+	encerrar o código: 
+		exit;
+		
+	ver o tipo de uma variável: 
+		var_dump($dataNascimento)
+		
+	tipo resource:
+		$arquivo = fopen("exemplo-02.php", "r");
+		
+	Nulo: NULL
+	
+	
+Variáveis pre-definidas
+
+	Via GET (virá sempre como string):
+		$nome = (int)$_GET["a"];
+		
+	IP e ARQUIVO DO SERVIDOR:
+		$ip = $_SERVER["REMOTE_ADDR"];
+		$script = $_SERVER["SCRIPT_NAME"];
+		
+		
+Escopo
+
+	Ver variáveis globais dentro de um método:
+		global $nomeDaVariavel;
+		
+		
+Operadores
+
+	Exponencial:
+		$a ** $b
+		
+	Igual valor e tipo:
+		===
+		
+	SpaceShip (retorna baseado no primeiro: -1 menor, 0 igual, 1 maior)
+		<=>
+		Exemplo: 50 <=> 35 //retorna 1
+		
+	null coalesce (retorna o primeiro não nulo):
+		NULL ?? NULL ?? 10 // retorna 10
+		NULL ?? 8 ?? 10    // retorna 8
+	
+	
+Strings
+	Interpolacao de variáveis	
+		Aspas simples:
+			tudo é texto
+		Aspas duplas:
+			ele interpreta variáveis
+			Exemplo: "Valor da variavel: $variavel_1 "
+			
+	Texto caixa alta: 
+		srttoupper($nome)
+	Texto caixa baixa:
+		strtolower($nome)
+	Primeira letra caixa alta:
+		ucfirst($nome)
+	Todas as primeiras letras maiusculas:	
+		ucwords($nome)
+	Replace:
+		str_replace("antes", "depois", $nome)
+	Busca texto:
+		strpos($nome, "Joao");
+	SubString:
+		substr($nome, 0, 17);
+	tamanho:
+		strlen($nome);
+		
+		
+Include e Required
+	
+	//Nao obriga que funcione e exista
+	//Inclui o path de funcoes default do php
+	include "../exemplo-02.php";
+	
+	//obriga que exista e nao tenha problema
+	require "../exemplo-02.php";		
+			
+	//Tem include_once e Require_once
+	
+	
+Estruturas condicionais
+
+	Ternario:
+		$nome == "Joao" ? true : false;
+		
+		
+	Switch Case:
+		switch( date("w") ){
+			
+			case 0:
+				echo "Domingo";
+				break;
+			
+			case 1:
+				echo "Segunda";
+				break;
+				
+			case 2:
+				echo "Terça";
+				break;
+				
+			case 3:
+				echo "Quarta";
+				break;
+				
+			default:
+				echo "Data invalida"
+				break;
+		}
+		
+	For:
+		//for padrao
+		for ($i = 0; $i < 10; $i++ ){
+			echo "$i";
+			continue;
+			break;
+		}
+		
+		//combobox
+		echo "<select>";
+		for ($i = date("Y"); $i > date("Y") - 200; $i--){
+			
+			echo '<option value="' . $i. '">' . $i . '</option>'; 
+			
+		}
+		echo "</select>";
+		
+		foreach ($meses as $mes){
+			echo $mes;
+		}
+		
+		foreach ($meses as $index => $mes){
+			echo $indice . "" . $mes
+		}
+
+	 	
+Data
+	
+	Dia da semana:
+		date("w")
+		
+	Ano
+		date("Y")
+
+		
+Array
+
+	Ultimo item de um array bidirecional:
+		end( $array[1] ) // retorna por exemplo $array[1][9]
+		
+	Adicionar elementos num array:
+		array_push
+		
+	Somar todos os elementos de um array:
+		array_sum($meuArray);
+		
+	Contar elementos de um array:
+		count($meuArray);
+	Buscar elemento num array:
+		in_array($array, array(".", ".."));
+		
+
+JSON
+
+	Exemplo onde é transformado o array em JSON
+		$pessoas = array();
+		
+		array_push( $pessoas, array(
+			'nome' => 'João',
+			'idade' => 20
+		));
+		
+		array_push( $pessoas, array(
+			'nome' => 'Maria',
+			'idade' => 25
+		));
+	
+		json_encode($pessoas)
+		
+	Exemplo onde é decodificado um JSON para Array
+	
+		$json = '[{"nome": ....... }]'
+		
+		$data = json_decode( $json, true);   // true é para transformar diretamente para array
+		
+		var_dump($data);
+		
+
+Constantes
+
+	Criando constantes:
+		define("SERVIDOR","127.0.0.1");
+		echo SERVIDOR;
+		
+	Outra forma:
+		define("BANCO_DE_DADOS", [
+			'127.0.0.1',
+			'root',
+			'password'
+		], true); //aceita maiuscula ou minuscula
+		
+	Constantes do PHP:
+		PHP_VERSION
+		DIRECTORY_SEPARATOR
+		
+		
+Sessões
+
+	Inicializando a sessão no seu site:
+		sesion_start();
+		
+	Utilizando
+		$_SESSION['nome'];
+		
+	Remover da sessão:
+		session_unset($_SESSION['nome']);
+		ou
+		session_destroy();  //mata até o usuário
+		
+	Exibir id da sessão:
+		session_id();
+		
+	Atualizar o id de sessão:
+		session_regenerate_id();
+		
+	Status da sessão:
+		session_status // valores: PHP_SESSION_DISABLED
+		
+
+Funções
+
+	É possível setar um valor padrão para um parametro
+		Ex: 
+			function ola( $mundo = "mundo"){...}
+			
+	Recuperar todos os argumentos de uma função:
+		func_get_args();
+		
+	Por padrão a passagem de parametro da função é por cópia
+	
+	Para passar a referencia como parametro, basta adicionar um "&"
+	Ex: function soma(&$a)
+	
+	PHP7
+		- parametros dinamicos
+			function soma(int ...$valores){}
+	
+		- forçando o retorno de um função:
+			function soma($a,$b):int{
+			
+			}
+	
+		- o PHP faz cast automático de parametros e retorno das funçoes
+		
+
+Datas
+
+	date("d/m/Y"); 25/09/2018
+	date("d/m/Y H:i:s") 25/09/2018 22:09:10
+	timestap: data deste 01/01/1970
+	
+	string para timestamp:
+		strtotime("2001-09-11")
+		
+	Timestamp pode servir para incrementar uma data, ex:
+		date("d/m/Y", "+1 day");
+		date("d/m/Y", "+1 week");
+	
+	Mudar idioma:	
+		setlocale(LC_ALL,setlocale(LC_ALL,"pt_BR", "pt_BR.utf-8", "portuguese"))
+		
+	Objeto DateTime()
+		Exemplo:
+			$dt = new DateTime();
+			$dt->format("d/m/Y H:i:s");
+			
+		Adicionando 15 dias:
+		$periodo = new DateInterval("P15D");
+		$dt = new DateTime();
+		$dt->add($periodo);
+		$dt->format("d/m/Y");
+		
+
+Objetos
+
+	Acessando internamente um atributo de uma classe:
+		$this->nome;
+		
+	Invocando métodos de um objeto:
+		$thiago = new Pessoa();
+		$thiago->nome = "Thiago Melo";
+		$thiago->falar();
+		
+	Métodos estáticos:
+		Criando:
+			public static function validaCPF($cpf)
+		Disparando:
+			Documento::validaCPF($cpf)
+			
+	Métodos mágicos:
+		__construct();
+		__destruct();
+		__toString();
+		__autoload();
+		
+	Encapsulamento:
+		protected ==> na classe e quem herda
+		private ==> apenas na classe
+		public ==> todo mundo
+		
+	Herança e Interface ( extends / interface / implements )
+	
+	Classe Abstrata: Classe que não pode ser instaciada, apenas herdada
+	Ex: abstract class
+	
+	Exemplo Autoload:
+		function __autoload($nameClass){
+			
+			require_once($nameClass.php)
+			
+		}
+
+		$carro = new Uno();
+		
+	Autoload avançado
+		Adicionando vários autoloads:
+		
+			function incluirClasses($nameClasse){
+				if(file_exists($nomeClasse.php)){
+					require_once("$nomeClasse.php");
+				}
+			}
+		
+			spl_autoload_register("incluirClasses")
+			spl_autoload_register(function($nameClasse)){
+				if( file_exists("Pasta" . DIRECTORY_SEPARATOR . $nomeClasse.php)){
+					require_once("Pasta" . DIRECTORY_SEPARATOR . $nomeClasse.php)
+				}
+			}
+			
+
+Manipular arquivos:
+
+	Verificar se é um diretorio:
+		is_dir($name);
+	Criar diretorio:
+		mkdir($name)
+	Remover diretorio:
+		rmdir($name)
+	Ler o conteudo de um diretorio:
+		scandir($name)
+	Ver informações de um arquivo:
+		pathinfo($filename);
+	Ver tamanho do um arquivo:
+		filesize($filename)
+		
+	//Criando arquivo
+		$file = fopen("log.txt", "w+");
+		fwrite($file, date(Y-m-d H:i:s));
+		fclose($file);
+	
+	//criar arquivo csv
+		$usuarios
+		$headers = array();
+		
+		foreach ($usuarios[0] as $key => $value){
+			array_push($headers, ucfirst($key));
+		}
+		
+		$file = fopen("usuarios.csv", "w+");
+		
+		fwrite($file, implode("," , $headers . "\r\n"))
+		
+		foreach( $usuarios as $row){
+			$data = array();
+			
+			foreach( $row as $key => $value){
+				array_push($data, $value);
+			}
+			
+			fwrite($file, implode(",", $data) . "\r\n");
+		}
+		
+		fclose($file);
+	
+	//remover Arquivo
+		unlink("teste.txt")
+	
+	//lendo o conteudo do arquivo	
+		fgets($file); //le uma linha e pula pra proxima
+	
+	
