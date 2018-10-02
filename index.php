@@ -18,6 +18,7 @@ require_once("config.php");
 
 //$userNovo = new Usuario("Thiago Novo","123456");
 //$userNovo->insert();
+//
 
 /*
 $userAlterado = new Usuario();
