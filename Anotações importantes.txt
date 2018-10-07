@@ -1,3 +1,5 @@
+Site: alsharad.000webhostapp.com
+
 
 Dicas:
 	 - Arquivo de configuração do APACHE: httpd.conf
@@ -446,5 +448,74 @@ Manipular arquivos:
 	
 	//lendo o conteudo do arquivo	
 		fgets($file); //le uma linha e pula pra proxima
+		
+
+Composer
 	
+	Comandos:
+		Composer -V    		//Verificar a versão do composer
+		composer init  		//Iniciar a criação do arquivo composer.json
+		composer install 	//carregando inicialmente as dependencias
+		composer update		//atualizar as dependencias
+	Dica:
+		O arquivo autoload.php deve ser adicionado no codigo para carregar as dependencias
+		Site com padrões de desenvolvimento: www.php-fig.org
+		
+	Exemplo de arquivo composer.json:
+	{
+		"require":{
+			"phpmailer/phpmailer": "~6.0",
+			"rain/raintpl": ">=3.0.0",
+			"slim/slim": "2.0"
+		}
+	}
 	
+TPL
+
+	require_once("vendor/autoload.php");
+
+	use Rain\Tpl;
+
+	$config = array(
+		"tpl_dir"	=> "tpl/",
+		"cache_dir"	=> "cache/"
+	);
+
+	Tpl::configure( $config );
+
+	$tpl = new Tpl;
+
+	// assign a variable
+	$tpl->assign( "name", "Obi Wan Kenoby" );
+
+	// assign an array
+	//$tpl->assign( "week", array( "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" ) );
+
+	$tpl->draw( "index" );
+	
+Slim
+	
+	Detalhes de uso:
+		1 - configurar o composer para carregar o slim (composer update)
+		2 - Copiar o arquivo .htacess da pasta slim para a raiz da aplicação
+		3 - Configurar as rotas no arquivo index.php
+		Exemplo:
+		
+		<?php
+		
+			require_once("vendor/autoload.php");
+			
+			$app = new \Slim\Slim();
+			
+			$app->get('/', function(){
+				echo "Home page";
+			});
+			
+			$app->get()('/hello/:name', function ($name){
+				echo "Hello, " . $name;
+				//
+			});
+			
+			$app->run();
+		
+		?>
