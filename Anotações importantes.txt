@@ -519,3 +519,14 @@ Slim
 			$app->run();
 		
 		?>
+
+Segurança
+
+	1 - Comandos para evitar injection no comando system:
+		$cmd = escaoeshellcmd($comando)
+
+	2 - Sql injection:
+		if( !is_numeric($id) || strlen($id)> 5){
+			exit("Pegamos voce");
+		}
+
